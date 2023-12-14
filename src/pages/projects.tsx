@@ -19,17 +19,19 @@ const ProjectsPage = () => {
 
   return (
     <Container>
-      <h1>Projects</h1>
-      <a
-        href="studio/structure/project"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <button>Create New Project</button>
-      </a>
+      <div className="flex justify-between items-center mb-8">
+        <h1 className="page-header">Projects</h1>
+        <a
+          href="studio/structure/project"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <button className="cta-button">+ Create New Project</button>
+        </a>
+      </div>
       <ul>
         {projects.map((project) => (
-          <li key={project._id}>
+          <li className="project-title" key={project._id}>
             <Link href={`/project/${project.slug.current}`}>
               {project.title}
             </Link>

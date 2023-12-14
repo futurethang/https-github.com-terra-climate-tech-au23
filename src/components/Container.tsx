@@ -1,12 +1,21 @@
 import Link from 'next/link'
+import Image from 'next/image'
 
 export default function Container({ children }: { children: React.ReactNode }) {
   return (
     <div className="container">
       <header className="header">
-        <Link className="header__title" href="/">
-          Next.js + Sanity
+        <Link className="header__title" href="https://www.terra.do/">
+          <Image
+            src="/images/Terra-do-Logo-and-typeface-transparent-light-mode.svg"
+            alt="Terra.do"
+            width={150}
+            height={75}
+          />
         </Link>
+        <h1 className="header_title mt-4">
+          Climate Tech Stack • Fall 2023 Cohort
+        </h1>
       </header>
       <main>{children}</main>
       <footer className="footer">

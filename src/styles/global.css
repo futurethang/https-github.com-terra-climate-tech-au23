@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 :root {
   --space-0: 0;
   --space-1: 4px;
@@ -49,6 +53,24 @@
 
   --max-width-0: 320px;
   --max-width-1: 768px;
+}
+
+@layer components {
+  .header_title {
+    @apply text-2xl;
+  }
+
+  .page-header {
+    @apply text-2xl font-semibold leading-tight text-gray-800;
+  }
+
+  .project-title {
+    @apply text-xl font-bold text-blue-600;
+  }
+
+  .cta-button {
+    @apply bg-blue-500 text-white font-bold py-2 px-4 rounded hover:bg-blue-700;
+  }
 }
 
 html {
@@ -167,6 +189,7 @@ body {
 /* Layout */
 .container {
   margin: 0 auto;
+  height: 100%;
 }
 
 main {
@@ -174,10 +197,8 @@ main {
 }
 
 .header {
-  display: flex;
   padding: 0 var(--space-1);
   border-bottom: 1px solid #ced2d9;
-
   z-index: 10;
   background: var(--white);
   position: fixed;
@@ -200,6 +221,9 @@ main {
   display: flex;
   justify-content: flex-end;
   padding: 0 var(--space-3);
+  position: fixed;
+  bottom: 0;
+  right: 0;
 }
 
 .footer .footer__text {
