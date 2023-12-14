@@ -66,10 +66,12 @@ export interface Project {
   _createdAt: string
   _updatedAt: string
   title: string
+  slug: Slug // Added slug field
   owner: User
-  description: string
+  body: PortableTextBlock[] // Changed from description to body
   links: { _key: string; _type: 'url'; href: string }[]
   images: ImageAsset[]
+  mainImage?: ImageAsset
   status: string
   updates: Update[]
   creationDate: string

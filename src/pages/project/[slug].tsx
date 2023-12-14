@@ -65,7 +65,9 @@ export default function ProjectSlugRoute(
         )}
         <div className="project__container">
           <h1 className="project__title">{project.title}</h1>
-          <p className="project__description">{project.description}</p>
+          <div className="project__content">
+            <PortableText value={project.body} />
+          </div>
           <p className="project__date">{formatDate(project._createdAt)}</p>
           <div className="project__content">
             <PortableText value={project.body} />
