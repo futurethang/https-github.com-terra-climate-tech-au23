@@ -21,7 +21,7 @@ const ProjectsPage = () => {
     <Container>
       <h1>Projects</h1>
       <a
-        href="YOUR_SANITY_STUDIO_URL/structure/project"
+        href="studio/structure/project"
         target="_blank"
         rel="noopener noreferrer"
       >
