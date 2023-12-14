@@ -9,6 +9,31 @@ export async function getPosts(client: SanityClient): Promise<Post[]> {
   return await client.fetch(postsQuery)
 }
 
+export const projectsQuery = groq`*[_type == "project"] | order(creationDate desc)`
+
+export async function getProjects(client: SanityClient): Promise<Project[]> {
+  return await client.fetch(projectsQuery)
+}
+
+// ... (existing imports and code)
+
+export const projectBySlugQuery = groq`*[_type == "project" && slug.current == $slug][0]`
+
+export async function getProject(
+  client: SanityClient,
+  slug: string,
+): Promise<Project> {
+  return await client.fetch(projectBySlugQuery, {
+    slug,
+  })
+}
+
+export const projectSlugsQuery = groq`
+*[_type == "project" && defined(slug.current)][].slug.current
+`
+
+// ... (rest of your existing code)
+
 export const postBySlugQuery = groq`*[_type == "post" && slug.current == $slug][0]`
 
 export async function getPost(
@@ -33,4 +58,39 @@ export interface Post {
   excerpt?: string
   mainImage?: ImageAsset
   body: PortableTextBlock[]
+}
+
+export interface Project {
+  _type: 'project'
+  _id: string
+  _createdAt: string
+  _updatedAt: string
+  title: string
+  owner: User
+  description: string
+  links: { _key: string; _type: 'url'; href: string }[]
+  images: ImageAsset[]
+  status: string
+  updates: Update[]
+  creationDate: string
+  lastUpdated: string
+}
+
+export interface User {
+  _type: 'user'
+  _id: string
+  _createdAt: string
+  name: string
+  email: string
+  bio: string
+  profileImage: ImageAsset
+}
+
+export interface Update {
+  _type: 'update'
+  _id: string
+  _createdAt: string
+  title: string
+  content: PortableTextBlock[]
+  datePosted: string
 }
