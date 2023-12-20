@@ -29,7 +29,36 @@ export default defineType({
     defineField({
       name: 'body',
       title: 'Body',
-      type: 'blockContent',
+      type: 'array',
+      of: [
+        {
+          type: 'block',
+          lists: [
+            { title: 'Bullet', value: 'bullet' },
+            { title: 'Numbered', value: 'number' },
+          ],
+        },
+        {
+          title: 'Image',
+          name: 'image',
+          type: 'image',
+          options: {
+            hotspot: true,
+          },
+          fields: [
+            {
+              name: 'caption',
+              type: 'string',
+              title: 'Caption',
+            },
+            {
+              name: 'attribution',
+              type: 'string',
+              title: 'Attribution',
+            },
+          ],
+        },
+      ],
     }),
     defineField({
       name: 'links',
