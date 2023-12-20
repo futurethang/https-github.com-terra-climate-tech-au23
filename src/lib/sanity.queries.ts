@@ -17,7 +17,13 @@ export async function getProjects(client: SanityClient): Promise<Project[]> {
 
 // ... (existing imports and code)
 
-export const projectBySlugQuery = groq`*[_type == "project" && slug.current == $slug][0]`
+export const projectBySlugQuery = groq`*[_type == "project" && slug.current == $slug]{
+      ...,
+      owner->{
+        name,
+        email,
+      },
+    }[0]`
 
 export async function getProject(
   client: SanityClient,
