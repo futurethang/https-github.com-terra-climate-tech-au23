@@ -71,10 +71,10 @@ export default function ProjectSlugRoute(
           />
         )}
         <div className="project__container">
-          <h1 className="project-title">{project.title}</h1>
+          <h1 className="project-title text-3xl mb-4">{project.title}</h1>
           <h2>{project.owner.name}</h2>
           <h2>{project.owner.email}</h2>
-          <div className="project__content">
+          <div className="project__content pt-4">
             <PortableText
               value={project.body}
               components={portableTextSerializers}

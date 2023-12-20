@@ -31,7 +31,13 @@ export default defineType({
       title: 'Body',
       type: 'array',
       of: [
-        { type: 'block' },
+        {
+          type: 'block',
+          lists: [
+            { title: 'Bullet', value: 'bullet' },
+            { title: 'Numbered', value: 'number' },
+          ],
+        },
         {
           title: 'Image',
           name: 'image',
